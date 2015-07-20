@@ -31,6 +31,7 @@ Plugin 'jimenezrick/vimerl'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-colorscheme molokai
+ colorscheme molokai
 " let g:molokai_original = 1
 " colorscheme tomorrow
+" colorscheme tomorrow-night
