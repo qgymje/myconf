@@ -33,11 +33,14 @@ Plugin 'honza/vim-snippets'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
- colorscheme molokai
- let g:molokai_original = 1
+"colorscheme jellybeans
+"colorscheme onedark
+colorscheme molokai
+"colorscheme ir_black
 " colorscheme tomorrow
 "colorscheme solarized
 
+let g:molokai_original = 1
 
 "" make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']

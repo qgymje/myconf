@@ -61,11 +61,12 @@ alias cls="clear"
 export TERM=xterm-256color
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.4.2/libexec
+export GOROOT=/usr/local/go
 export GOARCH=amd64
 export GOOS=darwin
-export GOPATH=~/Workspace/Go
+export GOPATH=~/Workspace/Go:~/Workspace/api-server
 export PATH=$PATH:~/Workspace/Go/bin
+export PATH=$PATH:/usr/local/go/bin
 
 #composer
 export PATH=$PATH:~/.composer/vendor/bin
@@ -96,3 +97,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+#developemnt
+export CHINARUN_API_SERVER_MODE=development
