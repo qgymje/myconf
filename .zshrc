@@ -61,12 +61,13 @@ alias cls="clear"
 export TERM=xterm-256color
 
 # Go
-export GOROOT=/usr/local/go
+export GOROOT=/usr/local/Cellar/go/1.5/libexec
 export GOARCH=amd64
 export GOOS=darwin
 export GOPATH=~/Workspace/Go:~/Workspace/api-server
+#godoc之类工具
+#export PATH=$PATH:/usr/local/Cellar/go/1.5/bin
 export PATH=$PATH:~/Workspace/Go/bin
-export PATH=$PATH:/usr/local/go/bin
 
 #composer
 export PATH=$PATH:~/.composer/vendor/bin

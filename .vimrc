@@ -22,7 +22,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'majutsushi/tagbar'
 Plugin 'jimenezrick/vimerl'
@@ -37,7 +37,7 @@ filetype plugin indent on    " required
 "colorscheme onedark
 colorscheme molokai
 "colorscheme ir_black
-" colorscheme tomorrow
+"colorscheme tomorrow
 "colorscheme solarized
 
 let g:molokai_original = 1
