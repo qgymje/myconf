@@ -22,7 +22,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'majutsushi/tagbar'
 Plugin 'jimenezrick/vimerl'
@@ -41,6 +41,11 @@ colorscheme molokai
 "colorscheme solarized
 
 let g:molokai_original = 1
+
+" ycm plugins
+let g:ycm_server_use_vim_stdout = 1
+let g:ycm_server_log_level = "debug"
+let g:ycm_path_to_python_interpreter = "/usr/bin/python"
 
 "" make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']

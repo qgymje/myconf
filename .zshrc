@@ -64,10 +64,12 @@ export TERM=xterm-256color
 export GOROOT=/usr/local/Cellar/go/1.5/libexec
 export GOARCH=amd64
 export GOOS=darwin
-export GOPATH=~/Workspace/Go:~/Workspace/api-server
+export GOPATH=~/Workspace/Go
+export DEF_GOPATH=~/Workspace/GO
 #godoc之类工具
 #export PATH=$PATH:/usr/local/Cellar/go/1.5/bin
 export PATH=$PATH:~/Workspace/Go/bin
+alias gopath='export GOPATH=$DEF_GOPATH:`pwd` && echo $GOPATH'
 
 #composer
 export PATH=$PATH:~/.composer/vendor/bin
