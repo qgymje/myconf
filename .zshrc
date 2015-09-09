@@ -103,3 +103,4 @@ source $ZSH/oh-my-zsh.sh
 #
 #developemnt
 export CHINARUN_API_SERVER_MODE=development
+export CHIANRUN_WANBISAI_MODE=development
