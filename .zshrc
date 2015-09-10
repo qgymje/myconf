@@ -61,7 +61,7 @@ alias cls="clear"
 export TERM=xterm-256color
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.5/libexec
+export GOROOT=/usr/local/Cellar/go/1.5.1/libexec
 export GOARCH=amd64
 export GOOS=darwin
 export GOPATH=~/Workspace/Go
