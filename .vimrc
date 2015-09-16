@@ -6,7 +6,7 @@ source ~/.vim_runtime/vimrcs/plugins_config.vim
 source ~/.vim_runtime/vimrcs/extended.vim
 
 try
-source ~/.vim_runtime/my_configs.vim
+    source ~/.vim_runtime/my_configs.vim
 catch
 endtry
 
@@ -28,6 +28,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'jimenezrick/vimerl'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'einars/js-beautify'
+Plugin 'maksimr/vim-jsbeautify'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -41,13 +43,14 @@ colorscheme molokai
 "colorscheme ir_black
 "colorscheme tomorrow
 "colorscheme solarized
+"colorscheme flattened_dark
 
 let g:molokai_original = 1
 
 " ycm plugins
-let g:ycm_server_use_vim_stdout = 1
-let g:ycm_server_log_level = "debug"
-let g:ycm_path_to_python_interpreter = "/usr/bin/python"
+"let g:ycm_server_use_vim_stdout = 1
+"let g:ycm_server_log_level = 'debug'
+"let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 
 "" make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -58,3 +61,15 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+if exists('$TMUX')
+    set term=screen-256color
+endif
+
+map <c-f> :call JsBeautify()<cr>
+" or
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for html
+autocmd FileType html tpl noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
