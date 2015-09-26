@@ -14,10 +14,10 @@ endif
 "colorscheme peaksea
 "colorscheme jellybeans
 "colorscheme onedark
-"colorscheme molokai
+colorscheme molokai
 "colorscheme ir_black
 "colorscheme tomorrow
-colorscheme solarized
+"colorscheme solarized
 "colorscheme flattened_dark
 
 let g:molokai_original = 1
@@ -29,7 +29,7 @@ let g:molokai_original = 1
 """"""""""""""""""""""""""""""
 map <c-f> :call JsBeautify()<cr>
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-autocmd FileType html tpl noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 
@@ -58,45 +58,27 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
-let g:go_fmt_autosave = 0
+let g:go_fmt_autosave = 1
 let g:go_play_open_browser = 0
-let g:go_bin_path = expand("~/Wrokkspace/Go/bin")
+let g:go_bin_path = expand("~/Workspace/Go/bin")
 
+
+""""""""""""""""""""""""""""""
+" => js-libs
+""""""""""""""""""""""""""""""
+autocmd BufReadPre *.js let b:javascript_lib_use_jquery = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_backbone = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_prelude = 0
+autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 0
+
+""""""""""""""""""""""""""""""
+" => airline
+""""""""""""""""""""""""""""""
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 """"""""""""""""""""""""""""""
 " => tagbar
 """"""""""""""""""""""""""""""
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ 
-],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ 
-},
-            \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ 
-},
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-    \ 
-}
-
-let g:NERDTreeWinPos = "left"
-let g:NERDTreeWinSize = 30
+nmap <leader>tb :TagbarToggle<CR>
