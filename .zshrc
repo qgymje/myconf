@@ -5,8 +5,8 @@ export ZSH=/Users/jimmychain/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+ ZSH_THEME="robbyrussell"
+#ZSH_THEME="agnoster"
 export DEFAULT_USER=$(whoami)
 
 # Uncomment the following line to use case-sensitive completion.
@@ -61,7 +61,7 @@ alias cls="clear"
 export TERM=xterm-256color
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.5.1/libexec
+export GOROOT=/usr/local/Cellar/go/1.6/libexec
 export GOARCH=amd64
 export GOOS=darwin
 export GOPATH=~/Workspace/Go
@@ -70,9 +70,15 @@ export DEF_GOPATH=~/Workspace/GO
 #export PATH=$PATH:/usr/local/Cellar/go/1.5/bin
 export PATH=$PATH:~/Workspace/Go/bin
 alias gopath='export GOPATH=$DEF_GOPATH:`pwd` && echo $GOPATH'
+alias gop=gopath
+alias fgopath='export GOPATH=`pwd` && echo $GOPATH'
+alias fgop=fgopath
 
 #composer
 export PATH=$PATH:~/.composer/vendor/bin
+
+#pyenv
+export PATH=~/.pyenv/shims:$PATH
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,4 +109,17 @@ source $ZSH/oh-my-zsh.sh
 #
 #developemnt
 export CHINARUN_API_SERVER_MODE=development
-export CHIANRUN_WANBISAI_MODE=development
+export CHINARUN_WANBISAI_MODE=development
+export CHINARUN_HERMES_MODE=development
+export CHINARUN_ACHILLES_MODE=development
+export CHIANRUN_PHOTOSERVERS_MODE=development
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source ~/.oh-my-zsh/plugins/zsh-autosuggestions/autosuggestions.zsh
+
+# Enable autosuggestions automatically.
+zle-line-init() {
+    zle autosuggest-start
+}
+zle -N zle-line-init
