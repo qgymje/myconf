@@ -1,12 +1,10 @@
 execute pathogen#infect()
 syntax on
-set nu
+"set nu
 set tabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab
-
-set paste
 
 filetype plugin indent on
 
