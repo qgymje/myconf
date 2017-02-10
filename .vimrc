@@ -8,6 +8,8 @@ set expandtab
 
 filetype plugin indent on
 
+set noswapfile
+
 set lbr
 set tw=500
 set ai "Auto indent
@@ -64,7 +66,11 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_go_checkers = ['go', 'errcheck']
+let g:syntastic_php_checkers = ['php', 'phpmd']
+
 
 map <leader>nn :NERDTreeToggle<cr>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+
+map <leader>tb :TagbarToggle<cr>

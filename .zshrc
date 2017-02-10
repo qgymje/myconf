@@ -84,7 +84,7 @@ export PATH=$PATH:~/Workspace/Go/bin
 
 alias fgop='export GOPATH=`pwd` && echo $GOPATH'
 alias agop='export GOPATH=`echo $DEF_GOPATH`:`pwd` && echo $GOPATH'
-alias dgop='export GOPATH=$DEF_GOPATH'
+alias dgop='export GOPATH=`echo $DEF_GOPATH` && echo $GOPATH'
 alias pgop='echo $GOPATH'
 alias gob='go build'
 alias gor='cd $GOROOT'
