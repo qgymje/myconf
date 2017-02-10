@@ -6,6 +6,8 @@ set shiftwidth=4
 set smarttab
 set expandtab
 
+set paste
+
 filetype plugin indent on
 
 set noswapfile
