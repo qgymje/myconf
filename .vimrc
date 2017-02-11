@@ -1,4 +1,5 @@
 execute pathogen#infect()
+
 syntax on
 "set nu
 set tabstop=4
@@ -7,6 +8,7 @@ set smarttab
 set expandtab
 
 filetype plugin indent on
+set fileencodings=utf-8
 
 set noswapfile
 
@@ -23,15 +25,24 @@ map <C-l> <C-W>l
 
 set hlsearch
 set incsearch 
+
+
 let g:mapleader = ","
 let mapleader=","
 
 nmap <leader>w :w!<cr>
+nmap <leader>q :wq!<cr>
 
+"""""""
+" colorscheme
+"""""""
 colorscheme molokai
 let g:molokai_original = 1
 let g:rehash256 = 1
 
+"""""""
+" vim-go
+"""""""
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
@@ -55,6 +66,9 @@ let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_bin_path = expand("~/Workspace/Go")
 
+"""""""
+" syntastic
+"""""""
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -68,9 +82,38 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_go_checkers = ['go', 'errcheck']
 let g:syntastic_php_checkers = ['php', 'phpmd']
 
-
+"""""""
+" nerdtree
+"""""""
 map <leader>nn :NERDTreeToggle<cr>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
+"""""""
+" tabbar
+"""""""
 map <leader>tb :TagbarToggle<cr>
+
+"""""""
+" snippets
+"""""""
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+
+
+"""""""
+" tabular
+"""""""
+if exists(":Tabularize")
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:\zs<CR>
+    vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
+"""""""
+" airline
+"""""""
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
