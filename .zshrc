@@ -65,6 +65,13 @@ alias cls="clear"
 alias gv="go version"
 alias sz="source ~/.zshrc"
 alias sc=sz
+
+function gog()
+{
+    eval `go get -v -v $1`
+#alias gg="go get -v -u "
+
+}
 #alias emacs="/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs -nw"
 alias emacs="/usr/local/Cellar/emacs-plus/24.5/Emacs.app/Contents/MacOS/Emacs -nw"
 
