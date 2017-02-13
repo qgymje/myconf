@@ -62,7 +62,6 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 #alias
 alias cls="clear"
-alias gv="go version"
 alias sz="source ~/.zshrc"
 alias sc=sz
 
@@ -90,12 +89,26 @@ export DEF_GOPATH=~/Workspace/GO
 export PATH=$GOROOT/bin:$PATH
 export PATH=$PATH:~/Workspace/Go/bin
 
+alias gv="go version"
 alias fgop='export GOPATH=`pwd` && echo $GOPATH'
 alias agop='export GOPATH=`echo $DEF_GOPATH`:`pwd` && echo $GOPATH'
 alias dgop='export GOPATH=`echo $DEF_GOPATH` && echo $GOPATH'
 alias pgop='echo $GOPATH'
 alias gob='go build'
 alias gor='cd $GOROOT'
+
+gop() {
+    if [ "$1" = "" ]; then
+    elif [ "$1" = "d" ]; then
+        export GOPATH=`echo $DEF_GOPATH`
+    elif [ "$1"  = "a" ]; then
+        export GOPATH=`echo $DEF_GOPATH`:`pwd`
+    elif [ "$1" = "f" ];then
+        export GOPATH=`pwd`
+    fi
+
+    echo "currnet GOPATH = "$GOPATH
+}
 
 #composer
 export PATH=$PATH:~/.composer/vendor/bin
