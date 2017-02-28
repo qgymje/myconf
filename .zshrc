@@ -53,7 +53,7 @@ alias vs="cd /Users/jimmychain/Workspace/verystar"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-autosuggestions)
 
 # User configuration
 
@@ -67,7 +67,7 @@ alias sc=sz
 
 function gog()
 {
-    eval `go get -v -v $1`
+    eval `go get -u -v $1`
 #alias gg="go get -v -u "
 
 }
@@ -78,7 +78,7 @@ alias emacs="/usr/local/Cellar/emacs-plus/24.5/Emacs.app/Contents/MacOS/Emacs -n
 export TERM=xterm-256color
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.7.4/libexec
+export GOROOT=/usr/local/Cellar/go/1.8/libexec
 #export GOROOT=/usr/local/go
 export GOARCH=amd64
 export GOOS=darwin
@@ -90,10 +90,10 @@ export PATH=$GOROOT/bin:$PATH
 export PATH=$PATH:~/Workspace/Go/bin
 
 alias gv="go version"
-alias fgop='export GOPATH=`pwd` && echo $GOPATH'
-alias agop='export GOPATH=`echo $DEF_GOPATH`:`pwd` && echo $GOPATH'
-alias dgop='export GOPATH=`echo $DEF_GOPATH` && echo $GOPATH'
-alias pgop='echo $GOPATH'
+alias gopp='echo $GOPATH'
+alias gopf='export GOPATH=`pwd` && echo $GOPATH'
+alias gopa='export GOPATH=`echo $DEF_GOPATH`:`pwd` && echo $GOPATH'
+alias gopd='export GOPATH=`echo $DEF_GOPATH` && echo $GOPATH'
 alias gob='go build'
 alias gor='cd $GOROOT'
 
