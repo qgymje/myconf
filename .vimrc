@@ -26,7 +26,6 @@ map <C-l> <C-W>l
 set hlsearch
 set incsearch 
 
-
 let g:mapleader = ","
 let mapleader=","
 

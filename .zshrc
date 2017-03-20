@@ -12,7 +12,9 @@ export DEFAULT_USER=$(whoami)
 alias qgm="cd /Users/jimmychain/Workspace/Go/src/github.com/qgymje"
 alias vs="cd /Users/jimmychain/Workspace/verystar"
 
-#export http_proxy=http://127.0.0.1:12948
+alias hp="http_proxy=http://localhost:8123"
+export http_proxy=http://127.0.0.1:8123
+
 #export https_proxy=https://127.0.0.1:12948
 
 # Uncomment the following line to use case-sensitive completion.
