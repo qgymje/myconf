@@ -1,7 +1,6 @@
 execute pathogen#infect()
 
-syntax on
-"set nu
+syntax on "set nu
 set tabstop=4
 set shiftwidth=4
 set smarttab
@@ -26,11 +25,14 @@ map <C-l> <C-W>l
 set hlsearch
 set incsearch 
 
+set cursorline
+
 let g:mapleader = ","
 let mapleader=","
 
 nmap <leader>w :w!<cr>
-nmap <leader>q :wq!<cr>
+nmap <leader>q :q!<cr>
+
 
 """""""
 " colorscheme
@@ -38,6 +40,7 @@ nmap <leader>q :wq!<cr>
 colorscheme molokai
 let g:molokai_original = 1
 let g:rehash256 = 1
+
 
 """""""
 " vim-go
@@ -74,12 +77,12 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_go_checkers = ['go', 'errcheck']
-let g:syntastic_php_checkers = ['php', 'phpmd']
+let g:syntastic_php_checkers = ['php']
 
 """""""
 " nerdtree
@@ -87,6 +90,7 @@ let g:syntastic_php_checkers = ['php', 'phpmd']
 map <leader>nn :NERDTreeToggle<cr>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+let NERDTreeShowHidden=1
 
 """""""
 " tabbar
@@ -118,18 +122,13 @@ let g:ycm_semantic_triggers =  {
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 
-
-"""""""
-" tabular
-"""""""
-nmap <leader>a= :Tabularize /=<CR>
-vmap <leader>a= :Tabularize /=<CR>
-nmap <leader>a: :Tabularize /:\zs<CR>
-vmap <leader>a: :Tabularize /:\zs<CR>
-
-"""""""
+""""""""
 " airline
 """""""
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
