@@ -13,7 +13,7 @@ alias qgm="cd /Users/jimmychain/Workspace/Go/src/github.com/qgymje"
 alias vs="cd /Users/jimmychain/Workspace/verystar"
 
 alias hp="http_proxy=http://localhost:8123"
-export http_proxy=http://127.0.0.1:8123
+#export http_proxy=http://127.0.0.1:8123
 
 #export https_proxy=https://127.0.0.1:12948
 
@@ -80,7 +80,7 @@ alias emacs="/usr/local/Cellar/emacs-plus/24.5/Emacs.app/Contents/MacOS/Emacs -n
 export TERM=xterm-256color
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.8/libexec
+export GOROOT=/usr/local/Cellar/go/1.8.1/libexec
 #export GOROOT=/usr/local/go
 export GOARCH=amd64
 export GOOS=darwin
@@ -111,7 +111,8 @@ gop() {
 
     echo "currnet GOPATH = "$GOPATH
 }
-
+#rustup
+export PATH=$PATH:~/.cargo/bin
 #composer
 export PATH=$PATH:~/.composer/vendor/bin
 

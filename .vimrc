@@ -4,8 +4,7 @@ syntax on "set nu
 set tabstop=4
 set shiftwidth=4
 set smarttab
-set expandtab
-
+set expandtab 
 filetype plugin indent on
 set fileencodings=utf-8
 
@@ -34,12 +33,18 @@ nmap <leader>w :w!<cr>
 nmap <leader>q :q!<cr>
 
 
+nmap <leader>- :vs<cr>
+set splitright
+
 """""""
 " colorscheme
 """""""
 colorscheme molokai
 let g:molokai_original = 1
 let g:rehash256 = 1
+
+"set background=dark
+"colorscheme solarized
 
 
 """""""
@@ -77,12 +82,13 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_go_checkers = ['go', 'errcheck']
 let g:syntastic_php_checkers = ['php']
+
+let g:syntastic_enable_elixir_checker = 1
 
 """""""
 " nerdtree
@@ -113,6 +119,7 @@ let g:ycm_semantic_triggers =  {
   \   'ruby' : ['.', '::'],
   \   'lua' : ['.', ':'],
   \   'erlang' : [':'],
+  \   'elixir' : ['.'],
   \ }
 
 
@@ -132,3 +139,7 @@ let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
+""""""""
+" rust
+"""""""
+let g:rustfmt_autosave = 1
