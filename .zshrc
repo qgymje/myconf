@@ -83,7 +83,7 @@ alias emacs="/usr/local/Cellar/emacs-plus/24.5/Emacs.app/Contents/MacOS/Emacs -n
 export TERM=xterm-256color
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.8.1/libexec
+export GOROOT=/usr/local/Cellar/go/1.8.3/libexec
 export GOBIN=~/Workspace/GO/bin
 #export GOROOT=/usr/local/go
 export GOARCH=amd64

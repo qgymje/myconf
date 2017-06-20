@@ -1,6 +1,8 @@
 execute pathogen#infect()
 
-syntax on "set nu
+syntax on 
+set nu
+set rnu
 set tabstop=4
 set shiftwidth=4
 set smarttab
@@ -24,26 +26,28 @@ map <C-l> <C-W>l
 set hlsearch
 set incsearch 
 
+set clipboard=unnamed
 "set cursorline
 
 let g:mapleader = " "
 let mapleader=" "
 
+
 nmap <leader>w :w!<cr>
 nmap <leader>q :q!<cr>
 
 
-nmap <leader>- :vs<cr>
+nmap <leader>+ :vs<cr>
 set splitright
 
 """""""
 " colorscheme
 """""""
-colorscheme Tomorrow-Night
+"colorscheme Tomorrow-Night
 
-"colorscheme molokai
-"let g:molokai_original = 1
-"let g:rehash256 = 1
+colorscheme molokai
+let g:molokai_original = 1
+let g:rehash256 = 1
 
 """""""
 " vim-go
@@ -69,7 +73,7 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goreturns"
+let g:go_fmt_command = "goimports"
 let g:go_bin_path = expand("~/Workspace/Go")
 let g:go_test_timeout = '30s'
 
@@ -156,8 +160,8 @@ let g:ycm_semantic_triggers =  {
 """""""
 " snippets
 """""""
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
 
 """"""""
 " airline
@@ -168,18 +172,3 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
-
-""""""""
-" rust
-"""""""
-let g:rustfmt_autosave = 1
-
-
-""""""""""""""""
-" typescript
-"""""""""""""""
-autocmd FileType typescript :set makeprg=tsc
-let g:typescript_compiler_binary = 'tsc'
-let g:typescript_compiler_options = ''
-
-
