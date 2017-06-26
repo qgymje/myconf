@@ -72,10 +72,9 @@ alias sc=sz
 
 function gog()
 {
-    eval `go get -u -v $1`
-#alias gg="go get -v -u "
-
+    eval `hp go get -u -v $1`
 }
+
 #alias emacs="/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs -nw"
 alias emacs="/usr/local/Cellar/emacs-plus/24.5/Emacs.app/Contents/MacOS/Emacs -nw"
 

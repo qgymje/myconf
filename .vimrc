@@ -26,6 +26,7 @@ map <C-l> <C-W>l
 set hlsearch
 set incsearch 
 
+
 set clipboard=unnamed
 "set cursorline
 
@@ -161,7 +162,8 @@ let g:ycm_semantic_triggers =  {
 " snippets
 """""""
 let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpNextTrigger="<c-k>"
 
 """"""""
 " airline
