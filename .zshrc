@@ -12,7 +12,7 @@ export DEFAULT_USER=$(whoami)
 alias vim="nvim"
 alias vi="nvim"
 
-alias qgm="cd ~/Go/src/github.com/qgymje"
+alias qgm="cd ~/Workspace/Go/src/github.com/qgymje"
 alias vs="cd ~/Workspace/verystar"
 
 alias hp="http_proxy=http://localhost:8123"
