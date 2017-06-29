@@ -12,8 +12,8 @@ export DEFAULT_USER=$(whoami)
 alias vim="nvim"
 alias vi="nvim"
 
-alias qgm="cd /Users/jimmychain/Workspace/Go/src/github.com/qgymje"
-alias vs="cd /Users/jimmychain/Workspace/verystar"
+alias qgm="cd ~/Go/src/github.com/qgymje"
+alias vs="cd ~/Workspace/verystar"
 
 alias hp="http_proxy=http://localhost:8123"
 #export http_proxy=http://127.0.0.1:8123
