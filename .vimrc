@@ -38,14 +38,16 @@ nmap <leader>w :w!<cr>
 nmap <leader>q :q!<cr>
 
 
-nmap <leader>+ :vs<cr>
-set splitright
+nmap <leader>vs :vs<cr>
+"set splitright
 
 """""""
 " colorscheme
 """""""
 "colorscheme Tomorrow-Night
-
+"colorscheme Tomorrow-Night-Eighties
+"colorscheme PaperColor
+"colorscheme darcula
 colorscheme molokai
 let g:molokai_original = 1
 let g:rehash256 = 1
@@ -68,6 +70,7 @@ au FileType go nmap <leader>s <Plug>(go-implements)
 au FileType go nmap <leader>i <Plug>(go-info)
 au FileType go nmap <leader>e <Plug>(go-rename)
 
+let g:go_echo_command_info = 1 " for test output
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
@@ -81,49 +84,17 @@ let g:go_test_timeout = '30s'
 """""""
 " syntastic
 """""""
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_check_on_open=0
+let g:syntastic_check_on_wq = 1
 
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_go_checkers = ['go', 'errcheck']
-"let g:syntastic_php_checkers = ['php']
-
-"""""""
-" neomake
-"""""""
-autocmd BufWritePost * Neomake
-let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
-let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
-let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
-let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
-let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
-let g:neomake_go_gometalinter_maker = {
-  \ 'args': [
-  \   '--tests',
-  \   '--enable-gc',
-  \   '--concurrency=3',
-  \   '--fast',
-  \   '-D', 'aligncheck',
-  \   '-D', 'dupl',
-  \   '-D', 'gocyclo',
-  \   '-D', 'gotype',
-  \   '-E', 'errcheck',
-  \   '-E', 'misspell',
-  \   '-E', 'unused',
-  \   '%:p:h',
-  \ ],
-  \ 'append_file': 0,
-  \ 'errorformat':
-  \   '%E%f:%l:%c:%trror: %m,' .
-  \   '%W%f:%l:%c:%tarning: %m,' .
-  \   '%E%f:%l::%trror: %m,' .
-  \   '%W%f:%l::%tarning: %m'
-  \ }
+let g:syntastic_go_checkers = ['go', 'errcheck']
+let g:syntastic_php_checkers = ['php']
 
 """""""
 " nerdtree
@@ -137,26 +108,6 @@ let NERDTreeShowHidden=1
 " tabbar
 """""""
 map <leader>tb :TagbarToggle<cr>
-
-"""""""
-" ycm
-"""""""
-let g:ycm_use_ultisnips_completer = 1
-let g:ycm_semantic_triggers =  {
-  \   'c' : ['->', '.'],
-  \   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
-  \             're!\[.*\]\s'],
-  \   'ocaml' : ['.', '#'],
-  \   'cpp,objcpp' : ['->', '.', '::'],
-  \   'perl' : ['->'],
-  \   'php' : ['->', '::'],
-  \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
-  \   'ruby' : ['.', '::'],
-  \   'lua' : ['.', ':'],
-  \   'erlang' : [':'],
-  \   'elixir' : ['.'],
-  \ }
-
 
 """""""
 " snippets
@@ -174,3 +125,16 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
+
+"""""""
+" ctrlp
+"""""""
+let g:ctrlp_max_files=0
+map <leader>f :CtrlP<cr>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$' 
+
+"""""""
+" ack
+"""""""
+map <leader>s :Ack!<Space>

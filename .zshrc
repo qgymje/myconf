@@ -9,8 +9,8 @@ ZSH_THEME="robbyrussell"
 #ZSH_THEME="agnoster"
 export DEFAULT_USER=$(whoami)
 
-alias vim="nvim"
-alias vi="nvim"
+#alias vim="nvim"
+#alias vi="nvim"
 
 alias qgm="cd /Users/jimmychain/Workspace/Go/src/github.com/qgymje"
 alias vs="cd /Users/jimmychain/Workspace/verystar"
@@ -63,26 +63,27 @@ plugins=(git zsh-autosuggestions)
 # User configuration
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH="$(brew --prefix homebrew/php/php72)/bin:$PATH"
 
 #alias
 alias cls="clear"
 alias sz="source ~/.zshrc"
 alias sc=sz
+alias gobl="GOOS=linux GOARCH=amd64 go build"
 
 function gog()
 {
     eval `hp go get -u -v $1`
 }
 
-#alias emacs="/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs -nw"
-alias emacs="/usr/local/Cellar/emacs-plus/24.5/Emacs.app/Contents/MacOS/Emacs -nw"
-
+#alias emacs="/usr/local/Cellar/emacs/25.2/Emacs.app/Contents/MacOS/Emacs -nw"
+#alias emacs="/usr/local/Cellar/emacs-plus/25.2_2/Emacs.app/Contents/MacOS/Emacs -nw"
 #tmux
 export TERM=xterm-256color
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.8.3/libexec
+export GOROOT=/usr/local/Cellar/go/1.9.1/libexec
+#export GOROOT=/usr/local/go
 export GOBIN=~/Workspace/GO/bin
 #export GOROOT=/usr/local/go
 export GOARCH=amd64
@@ -107,7 +108,7 @@ gop() {
     elif [ "$1" = "d" ]; then
         export GOPATH=`echo $DEF_GOPATH`
     elif [ "$1"  = "a" ]; then
-        export GOPATH=`echo $DEF_GOPATH`:`pwd`
+        export GOPATH=`echo $DEF_GOPATH:$PWD`
     elif [ "$1" = "f" ];then
         export GOPATH=`pwd`
     fi
