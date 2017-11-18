@@ -49,8 +49,17 @@ nmap <leader>vs :vs<cr>
 "colorscheme PaperColor
 "colorscheme darcula
 colorscheme molokai
+"colorscheme jellybeans
+"colorscheme hybrid_material
 let g:molokai_original = 1
 let g:rehash256 = 1
+
+
+""""""""""""""
+" vim-markdown
+""""""""""""""
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+let g:markdown_fenced_languages = ['html', 'go', 'bash=sh']
 
 """""""
 " vim-go
@@ -76,10 +85,13 @@ let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_bin_path = expand("~/Workspace/Go")
 let g:go_test_timeout = '30s'
+let g:go_def_mode = 'godef'
+let g:go_decls_includes = "func,type"
 
 """""""
 " syntastic
