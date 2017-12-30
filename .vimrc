@@ -28,7 +28,7 @@ set incsearch
 
 
 set clipboard=unnamed
-"set cursorline
+set cursorline
 
 let g:mapleader = " "
 let mapleader=" "
@@ -40,6 +40,12 @@ nmap <leader>q :q!<cr>
 
 nmap <leader>vs :vs<cr>
 "set splitright
+set showmatch
+"let python_highlight_all = 1
+
+au FileType python nmap <leader>r <Esc>:w<CR>:!clear;python %<CR>
+au FileType php nmap <leader>r <Esc>:w<CR>:!clear;php %<CR>
+"au FileType js nmap <leader>r <Esc>:w<CR>:!clear;node %<CR>
 
 """""""
 " colorscheme
@@ -48,18 +54,14 @@ nmap <leader>vs :vs<cr>
 "colorscheme Tomorrow-Night-Eighties
 "colorscheme PaperColor
 "colorscheme darcula
-colorscheme molokai
 "colorscheme jellybeans
 "colorscheme hybrid_material
+"colorscheme molokai
+colorscheme solarized
+set background=dark
 let g:molokai_original = 1
 let g:rehash256 = 1
 
-
-""""""""""""""
-" vim-markdown
-""""""""""""""
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-let g:markdown_fenced_languages = ['html', 'go', 'bash=sh']
 
 """""""
 " vim-go
@@ -96,17 +98,18 @@ let g:go_decls_includes = "func,type"
 """""""
 " syntastic
 """""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_check_on_open=0
-let g:syntastic_check_on_wq = 1
+"let g:syntastic_error_symbol = '✗'
+"let g:syntastic_warning_symbol = '⚠'
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
 
-let g:syntastic_go_checkers = ['go', 'errcheck']
-let g:syntastic_php_checkers = ['php']
+"let g:syntastic_go_checkers = ['go']
+"let g:syntastic_php_checkers = ['php']
+"let g:syntastic_python_checkers = ['pylint']
 
 """""""
 " nerdtree
@@ -150,3 +153,36 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 " ack
 """""""
 map <leader>s :Ack!<Space>
+
+"""""""
+" neomake
+"""""""
+autocmd BufWritePost * Neomake
+let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
+let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
+let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
+let g:neomake_go_enabled_makers = [ 'go' ]
+let g:neomake_go_gometalinter_maker = {
+  \ 'args': [
+  \   '--tests',
+  \   '--enable-gc',
+  \   '--concurrency=3',
+  \   '--fast',
+  \   '-D', 'aligncheck',
+  \   '-D', 'dupl',
+  \   '-D', 'gocyclo',
+  \   '-D', 'gotype',
+  \   '-E', 'errcheck',
+  \   '-E', 'misspell',
+  \   '-E', 'unused',
+  \   '%:p:h',
+  \ ],
+  \ 'append_file': 0,
+  \ 'errorformat':
+  \   '%E%f:%l:%c:%trror: %m,' .
+  \   '%W%f:%l:%c:%tarning: %m,' .
+  \   '%E%f:%l::%trror: %m,' .
+  \   '%W%f:%l::%tarning: %m'
+  \ }
+
