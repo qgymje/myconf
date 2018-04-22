@@ -3,8 +3,8 @@ execute pathogen#infect()
 syntax on 
 set nu
 set rnu
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set smarttab
 set expandtab 
 filetype plugin indent on
@@ -39,13 +39,16 @@ nmap <leader>q :q!<cr>
 
 
 nmap <leader>vs :vs<cr>
-"set splitright
+set splitright
 set showmatch
 "let python_highlight_all = 1
 
 au FileType python nmap <leader>r <Esc>:w<CR>:!clear;python %<CR>
 au FileType php nmap <leader>r <Esc>:w<CR>:!clear;php %<CR>
-"au FileType js nmap <leader>r <Esc>:w<CR>:!clear;node %<CR>
+au FileType js nmap <leader>r <Esc>:w<CR>:!clear;node %<CR>
+au FileType go nmap <leader>gt :!go test -v<CR>
+au FileType clojure nmap <leader>e :Eval<CR>
+au FileType elixir nmap <leader>dt <Esc>:ExDef<CR> ​​​​
 
 """""""
 " colorscheme
@@ -57,8 +60,8 @@ au FileType php nmap <leader>r <Esc>:w<CR>:!clear;php %<CR>
 "colorscheme jellybeans
 "colorscheme hybrid_material
 colorscheme molokai
-"colorscheme solarized
-"set background=dark
+"colorscheme gruvbox
+set background=dark
 let g:molokai_original = 1
 let g:rehash256 = 1
 
@@ -186,3 +189,5 @@ let g:neomake_go_gometalinter_maker = {
   \   '%W%f:%l::%tarning: %m'
   \ }
 
+
+let g:rainbow_active = 1
