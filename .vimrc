@@ -3,8 +3,8 @@ execute pathogen#infect()
 syntax on 
 set nu
 set rnu
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set smarttab
 set expandtab 
 filetype plugin indent on
@@ -26,13 +26,11 @@ map <C-l> <C-W>l
 set hlsearch
 set incsearch 
 
-
 set clipboard=unnamed
 set cursorline
 
 let g:mapleader = " "
 let mapleader=" "
-
 
 nmap <leader>w :w!<cr>
 nmap <leader>q :q!<cr>
@@ -45,23 +43,23 @@ set showmatch
 
 au FileType python nmap <leader>r <Esc>:w<CR>:!clear;python %<CR>
 au FileType php nmap <leader>r <Esc>:w<CR>:!clear;php %<CR>
+au FileType ruby nmap <leader>r <Esc>:w<CR>:!clear;ruby %<CR>
 au FileType js nmap <leader>r <Esc>:w<CR>:!clear;node %<CR>
 au FileType go nmap <leader>gt :!go test -v<CR>
 au FileType clojure nmap <leader>e :Eval<CR>
-au FileType elixir nmap <leader>dt <Esc>:ExDef<CR> ​​​​
+au FileType elixir nmap <leader>dt <Esc>:ExDef<CR>
+au FileType elixir nmap <leader>t <Esc>:!mix test<CR>
+
 
 """""""
 " colorscheme
 """""""
-"colorscheme Tomorrow-Night
-"colorscheme Tomorrow-Night-Eighties
-"colorscheme PaperColor
-"colorscheme darcula
-"colorscheme jellybeans
-"colorscheme hybrid_material
-colorscheme molokai
+"colorscheme molokai
 "colorscheme gruvbox
-set background=dark
+"colorscheme onedark
+"colorscheme solarized
+colorscheme PaperColor
+set background=light
 let g:molokai_original = 1
 let g:rehash256 = 1
 
@@ -93,7 +91,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
-let g:go_bin_path = expand("~/Workspace/Go")
+let g:go_bin_path = expand("~/go")
 let g:go_test_timeout = '30s'
 let g:go_def_mode = 'godef'
 let g:go_decls_includes = "func,type"
@@ -130,9 +128,9 @@ map <leader>tb :TagbarToggle<cr>
 """""""
 " snippets
 """""""
-let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpNextTrigger="<c-k>"
+"let g:UltiSnipsExpandTrigger="<c-l>"
+"let g:UltiSnipsJumpForwardTrigger="<c-j>"
+"let g:UltiSnipsJumpNextTrigger="<c-k>"
 
 """"""""
 " airline
@@ -140,7 +138,9 @@ let g:UltiSnipsJumpNextTrigger="<c-k>"
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
-let g:airline_theme='tomorrow'
+"let g:airline_theme='gruvbox'
+let g:airline_theme='solarized'
+"let g:airline_theme='simple'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
@@ -189,5 +189,31 @@ let g:neomake_go_gometalinter_maker = {
   \   '%W%f:%l::%tarning: %m'
   \ }
 
+""""""
+" rainbow parentheses
+""""""
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
-let g:rainbow_active = 1
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:deoplete#enable_at_startup = 1
