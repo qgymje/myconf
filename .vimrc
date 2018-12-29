@@ -49,17 +49,19 @@ au FileType go nmap <leader>gt :!go test -v<CR>
 au FileType clojure nmap <leader>e :Eval<CR>
 au FileType elixir nmap <leader>dt <Esc>:ExDef<CR>
 au FileType elixir nmap <leader>t <Esc>:!mix test<CR>
+au FileType elixir nmap <leader>f <Esc>:!mix format<CR>
 
 
 """""""
 " colorscheme
 """""""
-"colorscheme molokai
+colorscheme molokai
 "colorscheme gruvbox
 "colorscheme onedark
 "colorscheme solarized
-colorscheme PaperColor
-set background=light
+"colorscheme PaperColor
+"colorscheme Tomorrow-Night-Bright
+"set background=light
 let g:molokai_original = 1
 let g:rehash256 = 1
 
@@ -93,8 +95,11 @@ let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_bin_path = expand("~/go")
 let g:go_test_timeout = '30s'
-let g:go_def_mode = 'godef'
+let g:go_def_mode = 'guru'
+let g:go_info_mode = 'guru'
+let g:go_def_reuse_buffer = 1
 let g:go_decls_includes = "func,type"
+let g:go_term_mode = "vsplit"
 
 """""""
 " syntastic
@@ -139,8 +144,8 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline_theme='gruvbox'
-let g:airline_theme='solarized'
-"let g:airline_theme='simple'
+"let g:airline_theme='solarized'
+let g:airline_theme='simple'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
@@ -151,11 +156,6 @@ let g:ctrlp_max_files=0
 map <leader>f :CtrlP<cr>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$' 
-
-"""""""
-" ack
-"""""""
-map <leader>s :Ack!<Space>
 
 """""""
 " neomake
@@ -217,3 +217,16 @@ let g:rbpt_colorpairs = [
     \ ]
 
 let g:deoplete#enable_at_startup = 1
+
+"""""""
+" python model
+"""""""
+let g:pymode_python = 'python3'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
+"""""""
+" deoplete.nvim
+"""""""
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+"let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
