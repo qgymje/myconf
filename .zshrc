@@ -1,107 +1,70 @@
-# Path to your oh-my-zsh installation.
 export ZSH=/Users/jimmychain/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 #ZSH_THEME="agnoster"
 export DEFAULT_USER=$(whoami)
+alias vim="nvim"
+#alias vim="mvim -v"
+alias vs="cd /Users/jimmychain/Workspace/verystar"
+alias hp="http_proxy=http://localhost:1087 https_proxy=http://localhost:1087"
+alias npvs="no_proxy=git.verystar.cn"
 
-#alias vim="nvim"
-#alias vi="nvim"
+alias dhp="unset http_proxy\ unset https_proxy"
+alias hpp="echo http_proxy=http://localhost:1087 https_proxy=http://localhost:1087"
+#alias php="/usr/local/bin/php"
+#alias phpize="/usr/local/bin/phpize"
 
-alias qgm="cd ~/Workspace/Go/src/github.com/qgymje"
-alias vs="cd ~/Workspace/verystar"
+#export http_proxy=http://127.0.0.1:1087
+#export https_proxy=http://127.0.0.1:1087
 
-alias hp="http_proxy=http://localhost:8123"
-#export http_proxy=http://127.0.0.1:8123
-
-#export https_proxy=https://127.0.0.1:12948
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
-
-# User configuration
+plugins=(git autojump zsh-autosuggestions zsh-syntax-highlighting)
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="$(brew --prefix homebrew/php/php72)/bin:$PATH"
 
 #alias
 alias cls="clear"
 alias sz="source ~/.zshrc"
 alias sc=sz
-alias gobl="GOOS=linux GOARCH=amd64 go build"
 
-function gog()
-{
-    eval `hp go get -u -v $1`
-}
-
-#alias emacs="/usr/local/Cellar/emacs/25.2/Emacs.app/Contents/MacOS/Emacs -nw"
+alias emacs="/usr/local/Cellar/emacs/25.3/bin/emacs"
 #alias emacs="/usr/local/Cellar/emacs-plus/25.2_2/Emacs.app/Contents/MacOS/Emacs -nw"
 #tmux
 export TERM=xterm-256color
+export LC_ALL=en_US.UTF-8
+
+
+#flutter
+#export PATH=$PATH:~/Workspace/flutter/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.9.1/libexec
-#export GOROOT=/usr/local/go
-export GOBIN=~/Workspace/GO/bin
-#export GOROOT=/usr/local/go
+#export GO111MODULE=auto
+export GOROOT=/usr/local/Cellar/go/1.12.5/libexec
+#export GOCACHE=off
+#export GOPROXY=http://127.0.0.1:1087
+export GOBIN=~/go/bin
 export GOARCH=amd64
 export GOOS=darwin
-export GOPATH=~/Workspace/GO
-export DEF_GOPATH=~/Workspace/GO
+export GOPATH=~/go
+export DEF_GOPATH=~/go
 #godoc之类工具
-#export PATH=$PATH:/usr/local/Cellar/go/1.5/bin
 export PATH=$GOROOT/bin:$PATH
-export PATH=$PATH:~/Workspace/Go/bin
+export PATH=$PATH:$GOBIN
 
-alias gv="go version"
-alias gopp='echo $GOPATH'
-alias gopf='export GOPATH=`pwd` && echo $GOPATH'
-alias gopa='export GOPATH=`echo $DEF_GOPATH`:`pwd` && echo $GOPATH'
-alias gopd='export GOPATH=`echo $DEF_GOPATH` && echo $GOPATH'
+alias gov="go version"
 alias gob='go build'
-alias gor='cd $GOROOT'
+alias gobl="GOOS=linux GOARCH=amd64 go build"
+alias gobw="GOOS=windows GOARCH=386 go build"
+alias got='go test -v '
+alias gor='go run -race '
+
+
+function gog()
+{
+    #eval `hp go get -u -v $1`
+    eval `go get -u -v $1`
+}
+
 
 gop() {
     if [ "$1" = "" ]; then
@@ -115,62 +78,21 @@ gop() {
 
     echo "currnet GOPATH = "$GOPATH
 }
-#rustup
-export PATH=$PATH:~/.cargo/bin
-#composer
-export PATH=$PATH:~/.composer/vendor/bin
 
-#pyenv
-export PATH=~/.pyenv/shims:$PATH
 
-#elixir
-#mix
-alias mt='mix test'
+alias golib='cd /Users/jimmychain/go/src/git.verystar.cn/golib'
 
 source $ZSH/oh-my-zsh.sh
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+export SSH_KEY_PATH="~/.ssh/dsa_id"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=3"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-#developemnt
-export CHINARUN_API_SERVER_MODE=development
-export CHINARUN_WANBISAI_MODE=development
-export CHINARUN_HERMES_MODE=development
-export CHINARUN_ACHILLES_MODE=development
-export CHIANRUN_PHOTOSERVERS_MODE=development
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# etcd
-export ETCDCTL_API=3
 
-#source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-#source ~/.oh-my-zsh/plugins/zsh-autosuggestions/autosuggestions.zsh
-
-# Enable autosuggestions automatically.
-#zle-line-init() {
-#    zle autosuggest-start
-#}
-#zle -N zle-line-init
-#
+export FZF_DEFAULT_COMMAND='
+  (git ls-tree -r --name-only HEAD ||
+   find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
+      sed s/^..//) 2> /dev/null'
+export PATH="/usr/local/opt/ruby/bin:$PATH"
