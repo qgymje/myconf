@@ -6,6 +6,7 @@ export DEFAULT_USER=$(whoami)
 #alias vim="nvim"
 #alias vim="mvim -v"
 alias vs="cd /Users/jimmychain/Workspace/verystar"
+alias qn="cd /Users/jimmychain/Workspace/qiniu"
 
 proxy_port=7890
 alias hp="http_proxy=http://localhost:$proxy_port https_proxy=http://localhost:$proxy_port"
@@ -24,24 +25,21 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 alias cls="clear"
 alias sz="source ~/.zshrc"
 alias sc=sz
+alias py="python3"
+alias k="kubectl"
 
-#alias emacs="/usr/local/bin/emacs-26.3"
-alias emacs="/usr/local/Cellar/emacs-plus/26.3/Emacs.app/Contents/MacOS/Emacs -nw"
+alias emacs="/usr/local/Cellar/emacs-plus@26/26.3/Emacs.app/Contents/MacOS/Emacs -nw"
 #tmux
 export TERM=xterm-256color
 export LC_ALL=en_US.UTF-8
 
 
 ############
-# Rust
-############
-export PATH=$PATH:$HOME/.cargo/bin
-
-############
 # Go
 ############
 #export GO111MODULE=auto
-export GOROOT=/usr/local/Cellar/go/1.14.5/libexec
+#export GOROOT=/usr/local/Cellar/go/1.16.5/libexec
+export GOROOT=/usr/local/go
 #export GOCACHE=off go test
 export GOPROXY=https://goproxy.cn,direct
 export GONOPROXY=off
@@ -49,8 +47,8 @@ export GOSUMDB=off
 export GOBIN=~/go/bin
 export GOARCH=amd64
 export GOOS=darwin
-export GOPATH=~/go
-export DEF_GOPATH=~/go
+export GOPATH=~/Workspace/go
+export DEF_GOPATH=~/Workspace/go
 #godoc之类工具
 export PATH=$GOROOT/bin:$PATH
 export PATH=$PATH:$GOBIN
@@ -61,6 +59,7 @@ alias gobl="GOOS=linux GOARCH=amd64 go build"
 alias gobw="GOOS=windows GOARCH=386 go build"
 alias got='go test -v '
 alias gor='go run -race '
+alias gog='GOFLAGS="-gcflags=-G=3"'
 
 function gog()
 {
@@ -85,15 +84,20 @@ gop() {
 
 alias golib='cd /Users/jimmychain/go/src/git.verystar.cn/golib'
 
+############
+# Rust
+############
+export PATH=$PATH:$HOME/.cargo/bin
+#export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+
 #########
-# python
+# java
 #########
-#export PATH=~/opt/anaconda3/bin:$PATH
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
 
 #########
 # scala
 #########
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.6.jdk/Contents/Home
 export SBT_OPTS="$SBT_OPTS -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=7890"
 
 
