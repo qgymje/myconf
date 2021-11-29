@@ -46,7 +46,6 @@ export GONOPROXY=off
 export GOSUMDB=off
 export GOARCH=amd64
 export GOOS=darwin
-export GOBIN=~/Workspace/go/bin
 export GOPATH=~/Workspace/go
 #godoc之类工具
 export PATH=$GOROOT/bin:$PATH
