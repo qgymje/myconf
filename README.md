@@ -1,3 +1,3 @@
 # myconf
 
-Tmux + Zsh + Vim configuration files.
+Zsh + Tmux + Vim configuration files.
