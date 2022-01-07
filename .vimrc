@@ -24,133 +24,95 @@ set clipboard=unnamed
 set cursorline
 
 
-au FileType html,vim,javascript,elixir,clojure,ruby,erlang setl tabstop=2
-au FileType html,vim,javascript,elixir,clojure,ruby,erlang setl shiftwidth=2
-au FileType java,php,python,go,c setl shiftwidth=4
-au FileType java,php,python,go,c setl tabstop=4
-
-
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
 let g:mapleader = " "
 let mapleader=" "
 
 nmap <leader>w :w!<cr>
-nmap <leader>q :q!<cr>
+nmap <leader>q :bd<cr> 
+nmap <leader>qq :q!<cr>
+
+
 nmap <leader>hs :split<cr>
 nmap <leader>vs :vs<cr>
 set splitbelow
 set showmatch
+
+"tabs move
+nnoremap <silent> <C-t>j :tabnext<cr>
+nnoremap <silent> <C-t>k :tabprevious<cr>
+nnoremap <silent> <C-t>n :tabnew<cr>
+
+"windows move
+"<C-w>h/j/k/l
+
+"buffers move
+nnoremap <silent> <C-j> :bn<cr>
+nnoremap <silent> <C-k> :bp<cr>
+nnoremap <silent> <C-h> :bf<cr>
+nnoremap <silent> <C-l> :bl<cr>
+
+"cursor move
+"<C-D>
+"<C-F>
+"<C-U>
+"<C-B>
+
+
+"filetype tabs
+au FileType html,vim,javascript,elixir,clojure,ruby,erlang setl tabstop=2
+au FileType html,vim,javascript,elixir,clojure,ruby,erlang setl shiftwidth=2
+au FileType java,php,python,go,c,rust setl shiftwidth=4
+au FileType java,php,python,go,c,rust setl tabstop=4
 
 
 """""""
 " colorscheme
 """""""
 "colorscheme molokai
+"let g:molokai_original = 1
 "colorscheme material
 "let g:material_theme_style = 'darker'
 "colorscheme onedark
+"let g:onedark_termcolors=16
 "colorscheme one
-"colorscheme solarized
 "colorscheme darcula
 "colorscheme Tomorrow-Night
 colorscheme gruvbox
-"colorscheme everforest
 "colorscheme jellybeans
-"set background=light
-"let g:molokai_original = 1
-set background=dark
+"colorscheme solarized
 let g:rehash256 = 1
-let g:onedark_termcolors=16
-let g:solarized_termcolors=256
+set background=dark
+"set background=light
 
 """"""""
 " airline
 """""""
 set laststatus=2
-"let g:airline_theme='simple'
-"let g:airline_theme='gruvbox'
-"let g:airline_theme='onedark'
-"let g:airline_theme='one'
-"let g:airline_theme='solarized'
-"let g:airline_theme='material'
+let g:airline_theme='base16'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter= 'unique_tail_improved'
 let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-
-
-""""""""
-" coc.nvim
-""""""""
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-autocmd CursorHold * silent call CocActionAsync('highlight')
+let g:airline#extensions#tabline#left_alt_sep = '⎮'
 
 """""""
-" ale
+" indent
 """""""
-let g:ale_sign_error = '😡'
-let g:ale_sign_warning = '🤡'
-let g:ale_completion_enabled = 1
-let g:ale_completion_autoimport = 1
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:airline#extensions#ale#enabled = 1
-let g:ale_open_list = 0
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_save = 1
-let g:ale_linters = {'go': ['golangci-lint']}
+let g:indentLine_color_term = 239
 
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
 
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
+""""""
+" syntastic 
+""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
-set statusline=%{LinterStatus()}
-
-"""""""
-" snippets
-"""""""
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsExpandTrigger="<c-o>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpNextTrigger="<c-z>"
 
 """""""
 " nerdtree
@@ -163,10 +125,17 @@ let g:NERDTreeDirArrowCollapsible = '-'
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=30
 
+"""""
+" ctrl-p
+"""""
+let g:ctrlp_map = '<C-p>'
+let g:ctrlp_cmd = 'CtrlPBuffer'
+
 """""""
 " tabbar
 """""""
 map <leader>tb :TagbarToggle<cr>
+let g:tagbar_ctags_bin="/opt/homebrew/bin/ctags"
 
 let g:tagbar_type_go = {
       \ 'ctagstype' : 'go',
@@ -197,9 +166,10 @@ let g:tagbar_type_go = {
             \ }
 
 
+nnoremap <leader>dt :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 """""""
-" vim-go
+" Go
 """""""
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>r <Plug>(go-run)
@@ -212,10 +182,6 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <leader>imp <Plug>(go-implements)
 au FileType go nmap <leader>ren <Plug>(go-rename)
 
-au FileType go nmap <leader>ds <Plug>(go-def-split)
-au FileType go nmap <leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <leader>dt <Plug>(go-def-tab)
-
 let g:go_highlight_function_parameters = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
@@ -226,12 +192,14 @@ let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_bin_path = expand("~/Workspace/go/bin")
 let g:go_test_timeout = '10s'
-let g:go_def_mode = 'gopls'
-let g:go_info_mode = 'gopls'
 let g:go_def_reuse_buffer = 1
 let g:go_decls_includes = "func,type"
 let g:go_term_enabled=1
 let g:go_term_reuse = 1
-let g:go_term_close_on_exit = 0
-let g:go_metalinter_autosave=0
+let g:go_term_close_on_exit = 0  "very important
+let g:go_metalinter_autosave=1
+let g:go_rename_command = 'gopls'
 
+""""""
+"Python
+""""""
